@@ -1,0 +1,22 @@
+{
+  "closeSetting" : 
+  {
+    "position" : {"x" : 1, "y" :  1},
+    "numToClose" : 20,
+    "resetClickTime" : 60,
+    "imageAlpha" : 0.5
+  },
+  "audioSetting":
+  [
+    {"fileName": "Sample.mp3", "volume": 0.8}
+  ],
+  "videoSetting" :
+  [
+    {"fileName" : "000.mp4", "volume": 0.8}
+  ],
+  "arduinoSetting" : 
+  {
+    "portName" : ["COM4"],
+    "space" : "S"
+  }
+}
