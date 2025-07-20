@@ -36,10 +36,12 @@ public class ScenesInput0 : RegistInputControl
         }
 
         // 현재 페이지에 따라 1차 함수 분기
-        Action<Key,bool> action = currentPage switch
+        Action<Key,bool> action = (currentPage, currentIndex ) switch
         {
-            0 => SelectPage0,
-            _ => (a,b) => { } // 정의되지 않은 페이지 입력은 아무것도 안함
+            (0,0) => P0I0,
+            (0, < 3) => P0I2,
+            (0, >= 3) => P0I4,
+            _ => DefaultInput // 정의되지 않은 페이지 입력은 아무것도 안함
         };
 
         action(key,performed);
@@ -55,22 +57,6 @@ public class ScenesInput0 : RegistInputControl
                 Debug.Log($"{currentPage}{currentIndex} : UpArrow Pressed");
                 break;
         }
-    }
-    
-    private void SelectPage0(Key context, bool performed)
-    {
-        Action<Key,bool> action = currentIndex switch
-        {
-            // page0, index0
-            0 => P0I0,
-            // page0, index2
-            2 => P0I2,
-            // page0, index4
-            4 => P0I4,
-            _ => DefaultInput
-        };
-        
-        action(context,performed);
     }
 
     #region page0
