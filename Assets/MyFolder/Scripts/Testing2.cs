@@ -43,8 +43,6 @@ public class Testing2 : MonoBehaviour
     
     void Update()
     {
-        
-
         if (frames != null)
         {
             AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
@@ -62,8 +60,6 @@ public class Testing2 : MonoBehaviour
 
             // 180때 0
             // 60때 1
-
-         
             
             if (camFrame  >= start && camFrame <= end)
             {
