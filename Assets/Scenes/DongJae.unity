@@ -153,8 +153,8 @@ VideoPlayer:
   m_TargetCamera: {fileID: 0}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 1120416439}
-  m_TargetMaterialProperty: _Texture2D
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
   m_RenderMode: 3
   m_AspectRatio: 2
   m_DataSource: 0
@@ -351,8 +351,8 @@ VideoPlayer:
   m_TargetCamera: {fileID: 0}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 1120416441}
-  m_TargetMaterialProperty: _Texture2D
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
   m_RenderMode: 3
   m_AspectRatio: 2
   m_DataSource: 0
@@ -1276,6 +1276,72 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 339d9fcbd9043be479f4c79d311a1fef, type: 3}
+--- !u!1 &625679326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625679328}
+  - component: {fileID: 625679327}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &625679327
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625679326}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 7de73bd18857f934ebe7675270ef20a1, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: e91875cd99be8184fb6bc533b159199e, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _BaseMap
+  m_RenderMode: 3
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: file://E:/Unity/Github/H_Picture_JamesWebb/Assets/StreamingAssets/Videos/1.mp4
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &625679328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625679326}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.867924, y: 6.194011, z: 13.4232855}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &631786461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,8 +1729,8 @@ VideoPlayer:
   m_TargetCamera: {fileID: 0}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 1120416440}
-  m_TargetMaterialProperty: _Texture2D
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
   m_RenderMode: 3
   m_AspectRatio: 2
   m_DataSource: 0
@@ -1844,6 +1910,72 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!1 &787539773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787539775}
+  - component: {fileID: 787539774}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &787539774
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787539773}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 7de73bd18857f934ebe7675270ef20a1, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: e91875cd99be8184fb6bc533b159199e, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _BaseMap
+  m_RenderMode: 3
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: file://E:/Unity/Github/H_Picture_JamesWebb/Assets/StreamingAssets/Videos/1.mp4
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &787539775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787539773}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.867924, y: 6.194011, z: 13.4232855}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789822205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,16 +2524,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -9003323146575883303, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: cb5eae66d589da04cbd2143cf7fab9fd, type: 2}
-    - target: {fileID: -8715391698889419334, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2ed04596169c3ed4f832dd27b9a43b43, type: 2}
     - target: {fileID: -8679921383154817045, guid: 6e197a2abec10c94d8f15608541b5bd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2452,41 +2574,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7918335002988649766, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: cb5eae66d589da04cbd2143cf7fab9fd, type: 2}
-    - target: {fileID: -7343331172465130696, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bd23793a7a96ee448a3881554b6e7fbe, type: 2}
-    - target: {fileID: -7023974396876390944, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b8bd715f927106d44a2b04ad6107d246, type: 2}
-    - target: {fileID: -6907323166211416895, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8d558726a3a077944a0bd62bed6b5529, type: 2}
     - target: {fileID: -4500384706176131772, guid: 6e197a2abec10c94d8f15608541b5bd5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 937a4113040e0fd439f2f666392bf289, type: 2}
-    - target: {fileID: -2445977506380834873, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2a2df93ec4343fe40a394e085e59e79e, type: 2}
-    - target: {fileID: -2268138116939433651, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: cb5eae66d589da04cbd2143cf7fab9fd, type: 2}
     - target: {fileID: -1853094968961178454, guid: 6e197a2abec10c94d8f15608541b5bd5,
         type: 3}
       propertyPath: m_BackGroundColor.a
@@ -2507,11 +2599,6 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -241587437493983680, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bcd9d2810b6c29040a834148eb50a744, type: 2}
     - target: {fileID: 65702495048144492, guid: 6e197a2abec10c94d8f15608541b5bd5,
         type: 3}
       propertyPath: m_IsActive
@@ -2522,46 +2609,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 937a4113040e0fd439f2f666392bf289, type: 2}
-    - target: {fileID: 882129737928793925, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fb3a5efdc3b64da4284291d348ab355e, type: 2}
     - target: {fileID: 919132149155446097, guid: 6e197a2abec10c94d8f15608541b5bd5,
         type: 3}
       propertyPath: m_Name
       value: "#1_\uCC3D\uC870\uC758\uAE30\uB465"
       objectReference: {fileID: 0}
-    - target: {fileID: 1710912232132487336, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6fb51e0cd5f31c7449ac3a33114e8f36, type: 2}
-    - target: {fileID: 2786534777698132407, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: cb5eae66d589da04cbd2143cf7fab9fd, type: 2}
-    - target: {fileID: 5325404870481453298, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: be86169578702344ea1f4380f4acd452, type: 2}
-    - target: {fileID: 5670784105149147771, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b8bd715f927106d44a2b04ad6107d246, type: 2}
-    - target: {fileID: 7339356831882890532, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b8bd715f927106d44a2b04ad6107d246, type: 2}
-    - target: {fileID: 8443713291819645580, guid: 6e197a2abec10c94d8f15608541b5bd5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b8bd715f927106d44a2b04ad6107d246, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2571,42 +2623,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1202404666}
   m_SourcePrefab: {fileID: 100100000, guid: 6e197a2abec10c94d8f15608541b5bd5, type: 3}
---- !u!23 &1120416439 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -2445977506380834873, guid: 6e197a2abec10c94d8f15608541b5bd5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1120416438}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1120416440 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6907323166211416895, guid: 6e197a2abec10c94d8f15608541b5bd5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1120416438}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1120416441 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5325404870481453298, guid: 6e197a2abec10c94d8f15608541b5bd5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1120416438}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1120416442 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7343331172465130696, guid: 6e197a2abec10c94d8f15608541b5bd5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1120416438}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1120416443 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1710912232132487336, guid: 6e197a2abec10c94d8f15608541b5bd5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1120416438}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1120416444 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -8715391698889419334, guid: 6e197a2abec10c94d8f15608541b5bd5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1120416438}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1168684511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3204,8 +3220,8 @@ VideoPlayer:
   m_TargetCamera: {fileID: 0}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 1120416444}
-  m_TargetMaterialProperty: _Texture2D
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
   m_RenderMode: 3
   m_AspectRatio: 2
   m_DataSource: 0
@@ -3508,8 +3524,8 @@ VideoPlayer:
   m_TargetCamera: {fileID: 0}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 1120416442}
-  m_TargetMaterialProperty: _Texture2D
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
   m_RenderMode: 3
   m_AspectRatio: 2
   m_DataSource: 0
@@ -3933,8 +3949,8 @@ VideoPlayer:
   m_TargetCamera: {fileID: 0}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 1120416443}
-  m_TargetMaterialProperty: _Texture2D
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
   m_RenderMode: 3
   m_AspectRatio: 2
   m_DataSource: 0
@@ -4575,6 +4591,8 @@ SceneRoots:
   - {fileID: 1168684512}
   - {fileID: 1120416438}
   - {fileID: 1432141684}
+  - {fileID: 625679328}
+  - {fileID: 787539775}
   - {fileID: 1480506930}
   - {fileID: 1762624453}
   - {fileID: 1687649960}

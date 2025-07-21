@@ -98,3 +98,11 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 /Assets/MyFolder/Resources/3/#1_창조의기둥.fbx
+/Assets/MyFolder/Resources/#1_창조의기둥.fbx
+/Assets/MyFolder/Resources/3/5.mp4
+/Assets/MyFolder/Resources/3/6.mp4
+/Assets/MyFolder/Resources/3/4-1.mp4
+/Assets/StreamingAssets/build_info
+build_info
+/Assets/StreamingAssets/build_info.meta
+build_info.meta
