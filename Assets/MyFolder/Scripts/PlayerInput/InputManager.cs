@@ -5,6 +5,7 @@ using Debug = DebugEx;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public interface InputControl
 {
@@ -43,7 +44,8 @@ public class InputManager : MonoBehaviour
     public bool sendStringToArduino;
     
     private InputControl _inputControl;
-
+    private StickInput _stickInput;
+    
     private int _sceneValue;
     
     // 인덱스 변경
@@ -63,6 +65,11 @@ public class InputManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        _stickInput = JsonSaver.Instance.Settings.stickInput;
     }
 
     public void SetInputControl(InputControl inputControl)
@@ -101,16 +108,44 @@ public class InputManager : MonoBehaviour
         {
             return;
         }
+        
+        // 키보드 입력이 아닐경우 리턴
+        Key key;
 
-        if (!performed)
+        if (context.control is KeyControl keyControl)
+        {
+            key = keyControl.keyCode;
+        }
+        else if (context.control is ButtonControl btn)
+        {
+            var btnName = btn.name;
+            if (string.Equals(btnName, _stickInput.up))
+            {
+                key = Key.UpArrow;
+            }
+            else if (string.Equals(btnName, _stickInput.down))
+            {
+                key = Key.DownArrow;
+            }
+            else if (string.Equals(btnName, _stickInput.left))
+            {
+                key = Key.LeftArrow;
+            }
+            else if (string.Equals(btnName, _stickInput.right))
+            {
+                key = Key.RightArrow;
+            }
+            else
+            {
+                Debug.Log(btnName);
+                key = Key.None;
+            }
+        }
+        else
         {
             return;
         }
         
-        // 키보드 입력이 아닐경우 리턴
-        if (context.control is not KeyControl keyControl) return;
-        
-        Key key = keyControl.keyCode;
         
         // bool값이 true라면, 키보드 입력을 SerialController에 전달
         if (sendStringToArduino)
@@ -129,10 +164,6 @@ public class InputManager : MonoBehaviour
     // SerialController에는 string을 key로 변환시켜 이 함수를 실행
     public void ArduinoInputControl(InputData data)
     {
-        if (!data.Pressed)
-        {
-            return;
-        }
         ExecuteInput(data.Key, data.Pressed);
     }
     
