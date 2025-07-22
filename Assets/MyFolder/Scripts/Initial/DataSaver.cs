@@ -33,4 +33,31 @@ public class DataSaver : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    [SerializeField] private GameObject[] selections;
+
+    private int _currentSelected = -1;
+    public int CurrentSelected
+    {
+        get => _currentSelected;
+        set
+        {
+            if (value >= selections.Length || value < 0 || _currentSelected == value)
+            {
+                if (value == -1)
+                {
+                    selections[_currentSelected].SetActive(false);
+                    _currentSelected = -1;
+                }
+                return;
+            }
+
+            if (_currentSelected != -1)
+            { 
+                selections[_currentSelected].SetActive(false);
+            }
+            selections[value].SetActive(true);
+            _currentSelected = value;
+        }
+    }
 }

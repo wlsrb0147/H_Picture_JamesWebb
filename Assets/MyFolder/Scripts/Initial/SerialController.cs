@@ -6,6 +6,19 @@ using System.Threading;
 using UnityEngine.InputSystem;
 
 
+public struct InputData
+{
+    public Key Key;                // 기본형 필드
+    public bool Pressed;      // Unity 엔진 타입도 가능
+    
+    // 생성자(Constructor)
+    public InputData(Key key, bool pressed)
+    {
+        this.Key = key;
+        this.Pressed = pressed;
+    }
+}
+
 public class SerialController : MonoBehaviour
 {
     [Tooltip("Port name with which the SerialPort object will be created.")]
@@ -114,7 +127,8 @@ public class SerialController : MonoBehaviour
             return;
         }
         
-        RegisterKeyCodes(Key.Space, _arduinoSetting.space);
+        RegisterKeyCodes(Key.Space, _arduinoSetting.spacePressed);
+        RegisterKeyCodes(Key.Space, _arduinoSetting.spaceReleased);
     }
     
     private void RegisterKeyCodes(Key key, string value)
@@ -191,21 +205,30 @@ public class SerialController : MonoBehaviour
         else
         {
             // string을 key로 변환
-            Key key = ConvertStringToKey(message);
+            InputData key = ConvertStringToKey(message);
             Debug.Log($"Get Message From {_nameList[index]} : {message}");
             // inputManager에 key 입력
-            _inputManager.ArduinoInputControl(key,index);
+            _inputManager.ArduinoInputControl(key);
         }
     }
     
-    private Key ConvertStringToKey(string input)
+    private InputData ConvertStringToKey(string input)
     {
+        InputData data = new InputData();
+        
         if (string.IsNullOrWhiteSpace(input))
-            return Key.None;
+        {
+            data.Key = Key.None;
+            data.Pressed = true;
+            return data;
+        }
 
         input = input.Trim().Replace("\n", "");
 
-        return _stringToKey.GetValueOrDefault(input, Key.None);
+        data.Key = _stringToKey.GetValueOrDefault(input, Key.None);
+        data.Pressed = !input.EndsWith(_arduinoSetting.releaseString);
+
+        return data;
     }
 
     public void SendArduinoKey(int index, Key key)

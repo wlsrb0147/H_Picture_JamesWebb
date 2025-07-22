@@ -5,7 +5,7 @@ using Debug = DebugEx;
 public abstract class RegistInputControl : MonoBehaviour, InputControl
 {
     protected GameObject Cam;
-    private void Start()
+    public virtual void Start()
     {
         RegisterControl();
         Cam = Camera.main.gameObject;

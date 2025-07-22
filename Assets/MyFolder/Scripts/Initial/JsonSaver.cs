@@ -18,7 +18,10 @@ public class CloseSetting
 public class ArduinoSetting
 {
     public string[] portNames;
-    public string space;
+    public string pressString;
+    public string releaseString;
+    public string spacePressed;
+    public string spaceReleased;
 }
 
 [Serializable]

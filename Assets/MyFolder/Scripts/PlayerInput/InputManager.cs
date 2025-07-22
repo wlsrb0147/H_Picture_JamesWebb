@@ -127,9 +127,13 @@ public class InputManager : MonoBehaviour
     
     // SerialController에서 전달받은 키보드 입력
     // SerialController에는 string을 key로 변환시켜 이 함수를 실행
-    public void ArduinoInputControl(Key key,int index)
+    public void ArduinoInputControl(InputData data)
     {
-        //ExecuteInput(key);
+        if (!data.Pressed)
+        {
+            return;
+        }
+        ExecuteInput(data.Key, data.Pressed);
     }
     
     

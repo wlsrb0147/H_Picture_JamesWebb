@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -18,12 +19,30 @@ public class ScenesInput0 : RegistInputControl
         base.ChangeIndex();
         SetCurrentInput(currentPage, currentIndex+1);
     }
+
+    private void ChangeIndex2(int index)
+    {
+        SetCurrentInput(currentPage, index);
+    }
+
+    public override void Start()
+    {
+        base.Start();
+        SetCurrentInput(0,0);
+    }
     
     public override void SetCurrentInput(int page, int index)
     {
         base.SetCurrentInput(page, index);
         currentPage =  page;
         currentIndex = index;
+
+        switch (page, index)
+        {
+            case (0,0):
+                DataSaver.Instance.CurrentSelected = 0;
+                break;
+        }
     }
 
     public override void ExecuteInput(Key key, bool performed)
@@ -66,13 +85,15 @@ public class ScenesInput0 : RegistInputControl
         Debug.Log($"Page0 Index0 Selected : {context}");
         switch (context)
         {
-            case Key.UpArrow:
-            case Key.DownArrow:
-                Debug.Log("Its Up/Down Arrow");
+            case Key.LeftArrow:
+                --DataSaver.Instance.CurrentSelected;
+                break;
+            case Key.RightArrow:
+                ++DataSaver.Instance.CurrentSelected;
                 break;
             case Key.Space:
-                Debug.Log("Its Up/Space");
-                SceneManager.LoadScene(1);
+                ChangeIndex2(DataSaver.Instance.CurrentSelected+1);
+                DataSaver.Instance.CurrentSelected = -1;
                 break;
         }
     }

@@ -17,6 +17,16 @@
   "arduinoSetting" : 
   {
     "portName" : ["COM4"],
-    "space" : "S"
+    "pressString" : "P",
+    "releaseString" : "R",
+    "spacePressed" : "SP",
+    "spaceReleased" : "SR"
+  },
+  "stickInput" :
+  {
+    "up" : "up",
+    "down" : "down",
+    "left" : "left",
+    "right" : "right"
   }
 }
