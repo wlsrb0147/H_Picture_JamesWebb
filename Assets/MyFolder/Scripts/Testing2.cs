@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using Debug = DebugEx;
@@ -11,16 +9,14 @@ public class Testing2 : MonoBehaviour
 {
     private static readonly int MAIN_TEX = Shader.PropertyToID(MainTex);
     private static readonly int OPACITY = Shader.PropertyToID(Opacity);
-    private MeshRenderer targetRenderer;
-    private List<Texture2D> frames;
+    [SerializeField] private MeshRenderer targetRenderer;
+    [SerializeField] private MeshRenderer targetRenderer2;
+    private Texture2D[] frames;
     [SerializeField] private float fps = 30f;
 
-    private AssetBundle _bundle;
-    private float _currentOpacity;
+    [SerializeField] private Animator anim;
 
-    [SerializeField] private bool dontAppear;
-    [SerializeField] private bool dontDisappear;
-
+    private Camera cam;
     
     private const string MainTex = "_MainTex";
     private const string Opacity = "_Opacity";
@@ -28,111 +24,56 @@ public class Testing2 : MonoBehaviour
     private Material _mat;
     private int _currentFrame;
     private float _timer;
-    [SerializeField] private string folderName;
 
-    [SerializeField] private float appearStart;
-    [SerializeField] private float appearEnd;
-    [SerializeField] private float disappearStart;
-    [SerializeField] private float disappearEnd;
+    [SerializeField] private float start;
+    [SerializeField] private float end;
     
     void Awake()
     {
+        cam = Camera.main;
         // .material은 인스턴스를 복제하니 주의
-        targetRenderer = GetComponent<MeshRenderer>();
         _mat = targetRenderer.material;
-        _mat.SetFloat(OPACITY,  0);
+        targetRenderer2.material = _mat;
     }
 
-    private IEnumerator Start()
+    private void Start()
     {
-        string bundlePath = Path.Combine(Application.streamingAssetsPath, "AssetBundles", folderName);
-        var bundleRequest = AssetBundle.LoadFromFileAsync(bundlePath);
-        yield return bundleRequest;
-        
-        _bundle = bundleRequest.assetBundle;
-        
-        if (_bundle == null) {
-            Debug.LogError("번들 로드 실패!");
-            yield break;
-        }
-        
-        var assetReq = _bundle.LoadAllAssetsAsync<Texture2D>();
-        yield return assetReq;
-
-        var textures = assetReq.allAssets
-            .Cast<Texture2D>()
-            .ToList();
-
-        frames = textures;
-        _mat.SetTexture(MAIN_TEX, frames[0]);
-
-        _bundle.Unload(false);
-        
-        Debug.Log($"AssetBundle {folderName} Load Complete");
+        frames = Resources.LoadAll<Texture2D>("Sample");
     }
     
     void Update()
     {
-        int camFrame = GetAnimFrame.Instance.currentFrame;
-        
-        if (camFrame  >= appearStart && camFrame <= appearEnd)
+        if (frames != null)
         {
-            if (frames == null) return;
+            AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
 
-            if (Mathf.Approximately(appearStart, appearEnd))
-            {
-                if (!Mathf.Approximately(_currentOpacity, 1))
-                {
-                    _mat.SetFloat(OPACITY,  1);
-                }
-            }
-            else
-            {
-                float opa = (camFrame-appearStart)/ (appearEnd - appearStart);
-                
-                if (!Mathf.Approximately(_currentOpacity, opa))
-                {
-                    _currentOpacity = opa;
-                    _mat.SetFloat(OPACITY, (camFrame - appearStart) / (appearEnd - appearStart));
-                }
-            }
+            AnimationClip clip = anim.runtimeAnimatorController.animationClips[0];
+            float clipLength = clip.length;           // 초 단위 길이
+            float frameRate  = clip.frameRate;        // 초당 프레임 수
             
-            _timer += Time.deltaTime;
-            int newFrame = Mathf.FloorToInt(_timer * fps) % frames.Count;
-            if (newFrame == _currentFrame) return;
-            _currentFrame = newFrame;
+            Debug.Log(clipLength);
+            Debug.Log(frameRate);
+            
+            float timeInCurrentLoop = (state.normalizedTime % 1) * clipLength;
+            int camFrame = Mathf.FloorToInt(timeInCurrentLoop * frameRate);
 
-            _mat.SetTexture(MAIN_TEX, frames[_currentFrame]);
-        }
-        else if (camFrame >= disappearStart && camFrame <= disappearEnd)
-        {
-            if (frames == null) return;
+
+            // 180때 0
+            // 60때 1
             
-            float opa = 1 - (camFrame-disappearStart)/ (disappearEnd - disappearStart);
-                
-            if (!Mathf.Approximately(_currentOpacity, opa))
+            if (camFrame  >= start && camFrame <= end)
             {
-                _currentOpacity = opa;
-                _mat.SetFloat(OPACITY,  opa);
+                _mat.SetFloat(OPACITY,  1 - (camFrame-start)/ (end - start));
             }
             
             _timer += Time.deltaTime;
-            int newFrame = Mathf.FloorToInt(_timer * fps) % frames.Count;
+            int newFrame = Mathf.FloorToInt(_timer * fps) % frames.Length;
             if (newFrame == _currentFrame) return;
             _currentFrame = newFrame;
 
+            // 프로퍼티 이름 그대로 사용 (아래 예시는 "Texture2D")
             _mat.SetTexture(MAIN_TEX, frames[_currentFrame]);
+            
         }
-    }
-
-    private void OnDisable()
-    {
-        if (_bundle != null)
-        {
-            _bundle.Unload(true);
-            _bundle = null;
-        }
-        
-        StopAllCoroutines();
     }
 }
