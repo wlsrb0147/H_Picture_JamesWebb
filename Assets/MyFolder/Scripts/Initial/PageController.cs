@@ -15,6 +15,7 @@ public class PageController : MonoBehaviour
     private void Start()
     {
         _inputManager = InputManager.Instance;
+        GoTitle();
     }
 
     // 유효한 페이지만 유지하도록 함
@@ -48,7 +49,6 @@ public class PageController : MonoBehaviour
 
     void Awake()
     {
-        GoTitle();
         Instance = this;
     }
 
@@ -70,7 +70,7 @@ public class PageController : MonoBehaviour
     public void GoTitle()
     {
         CurrentPage = 0;
-        pages[0].SetActive(true);
+        OpenPage(0);
 
         for (int i = 1; i < pages.Length; i++)
         {

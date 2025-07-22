@@ -25,6 +25,15 @@ public class ArduinoSetting
 }
 
 [Serializable]
+public class StickInput
+{
+    public string up;
+    public string down;
+    public string left;
+    public string right;
+}
+
+[Serializable]
 public class AudioSetting
 {
     public string fileName;
@@ -48,6 +57,7 @@ public class Settings
     public AudioSetting[] audioSetting;
     public VideoSetting[] videoSetting;
     public ArduinoSetting arduinoSetting;
+    public StickInput stickInput;
 }
 
 public class JsonSaver : MonoBehaviour
