@@ -8,11 +8,13 @@
   },
   "audioSetting":
   [
-    {"fileName": "Sample.mp3", "volume": 0.8}
+    {"fileName": "Sample.mp3", "volume": 0.8},
+    {"fileName": "Sound.mp3", "volume": 0.8}
   ],
   "videoSetting" :
   [
-    {"fileName" : "000.mp4", "volume": 0.8}
+    {"fileName" : "000.mp4", "volume": 0.8},
+    {"fileName" : "001.mp4", "volume": 0.8}
   ],
   "arduinoSetting" : 
   {
@@ -24,9 +26,11 @@
   },
   "stickInput" :
   {
-    "up" : "up",
-    "down" : "down",
-    "left" : "left",
-    "right" : "right"
-  }
+    "up" : "down",
+    "down" : "up",
+    "left" : "right",
+    "right" : "left",
+    "button" : "trigger"
+  },
+  "animSpeed" : 2
 }

@@ -9,21 +9,18 @@ using Debug = DebugEx;
 
 public class Testing2 : MonoBehaviour
 {
-    private static readonly int MAIN_TEX = Shader.PropertyToID(MainTex);
-    private static readonly int OPACITY = Shader.PropertyToID(Opacity);
+    private static readonly int MAIN_TEX = Shader.PropertyToID("_MainTex");
+    private static readonly int OPACITY = Shader.PropertyToID("_Opacity");
+    private static readonly int COLOR = Shader.PropertyToID("_Color");
     private MeshRenderer targetRenderer;
     private List<Texture2D> frames;
     [SerializeField] private float fps = 30f;
 
     private AssetBundle _bundle;
-    private float _currentOpacity;
+    private byte _currentOpacity;
 
     [SerializeField] private bool dontAppear;
     [SerializeField] private bool dontDisappear;
-
-    
-    private const string MainTex = "_MainTex";
-    private const string Opacity = "_Opacity";
 
     private Material _mat;
     private int _currentFrame;
@@ -40,10 +37,11 @@ public class Testing2 : MonoBehaviour
         // .material은 인스턴스를 복제하니 주의
         targetRenderer = GetComponent<MeshRenderer>();
         _mat = targetRenderer.material;
-        _mat.SetFloat(OPACITY,  0);
+        Color32 col = new Color32(255, 255, 255, 0);
+        _mat.SetColor(COLOR, col );
     }
 
-    private IEnumerator Start()
+    /*private IEnumerator Start()
     {
         string bundlePath = Path.Combine(Application.streamingAssetsPath, "AssetBundles", folderName);
         var bundleRequest = AssetBundle.LoadFromFileAsync(bundlePath);
@@ -69,7 +67,7 @@ public class Testing2 : MonoBehaviour
         _bundle.Unload(false);
         
         Debug.Log($"AssetBundle {folderName} Load Complete");
-    }
+    }*/
     
     void Update()
     {
@@ -77,55 +75,42 @@ public class Testing2 : MonoBehaviour
         
         if (camFrame  >= appearStart && camFrame <= appearEnd)
         {
-            if (frames == null) return;
-
             if (Mathf.Approximately(appearStart, appearEnd))
             {
-                if (!Mathf.Approximately(_currentOpacity, 1))
+                if (!Mathf.Approximately(_currentOpacity, 231))
                 {
-                    _mat.SetFloat(OPACITY,  1);
+                    _currentOpacity = 231;
+                    Color32 col = new Color32(255,255,255,231);
+                    _mat.SetColor(COLOR,  col);
                 }
             }
             else
             {
-                float opa = (camFrame-appearStart)/ (appearEnd - appearStart);
+                byte opa =(byte)((camFrame-appearStart)/ (appearEnd - appearStart) * 231);
                 
                 if (!Mathf.Approximately(_currentOpacity, opa))
                 {
                     _currentOpacity = opa;
-                    _mat.SetFloat(OPACITY, (camFrame - appearStart) / (appearEnd - appearStart));
+                    
+                    Color32 col = new Color32(255,255,255,opa);
+                    _mat.SetColor(COLOR, col);
                 }
             }
-            
-            _timer += Time.deltaTime;
-            int newFrame = Mathf.FloorToInt(_timer * fps) % frames.Count;
-            if (newFrame == _currentFrame) return;
-            _currentFrame = newFrame;
-
-            _mat.SetTexture(MAIN_TEX, frames[_currentFrame]);
         }
         else if (camFrame >= disappearStart && camFrame <= disappearEnd)
         {
-            if (frames == null) return;
-            
-            float opa = 1 - (camFrame-disappearStart)/ (disappearEnd - disappearStart);
+            byte opa = (byte)((1 - (camFrame-disappearStart)/ (disappearEnd - disappearStart)) * 231);
                 
             if (!Mathf.Approximately(_currentOpacity, opa))
             {
                 _currentOpacity = opa;
-                _mat.SetFloat(OPACITY,  opa);
+                Color32 col = new Color32(255,255,255,opa);
+                _mat.SetColor(COLOR,  col);
             }
-            
-            _timer += Time.deltaTime;
-            int newFrame = Mathf.FloorToInt(_timer * fps) % frames.Count;
-            if (newFrame == _currentFrame) return;
-            _currentFrame = newFrame;
-
-            _mat.SetTexture(MAIN_TEX, frames[_currentFrame]);
         }
     }
 
-    private void OnDisable()
+    /*private void OnDisable()
     {
         if (_bundle != null)
         {
@@ -134,5 +119,5 @@ public class Testing2 : MonoBehaviour
         }
         
         StopAllCoroutines();
-    }
+    }*/
 }

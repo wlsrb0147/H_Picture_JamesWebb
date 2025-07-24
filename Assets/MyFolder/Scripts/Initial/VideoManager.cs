@@ -146,6 +146,7 @@ public class VideoManager : MonoBehaviour
             
                 int x = i * 100 + j;
                 _videoArrayValue.Add(videoPlayers[i].mainPlayers[j], x);
+                Debug.Log($"{x} added");
             }
         }
         

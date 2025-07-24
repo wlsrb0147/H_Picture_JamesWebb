@@ -21,11 +21,13 @@ public class ScenesInput0 : RegistInputControl
 
     [SerializeField] private GameObject cam;
     
-    private Vector3[] positions = new Vector3[4];
-    private Quaternion[] rotations = new Quaternion[4];
+    private readonly Vector3[] positions = new Vector3[4];
+    private readonly Quaternion[] rotations = new Quaternion[4];
     
     [SerializeField] private VideoPlayer[] videoPlayers;
-    
+    [SerializeField] private GetAnimFrame animFrame;
+
+    private float _animSpeed;
     private const string Speed  = "Speed";
 
     
@@ -54,6 +56,8 @@ public class ScenesInput0 : RegistInputControl
         rotations[1] = new Quaternion(-0.0350527689f,0.966171861f,-0.0921914652f,-0.238293961f);
         rotations[2] = new Quaternion(0.0480275787f,0.79107815f,0.0809217617f,-0.604433894f);
         rotations[3] = new Quaternion(-0.0506136753f,0.676819682f,-0.0319978818f,-0.733709455f);
+
+        _animSpeed = JsonSaver.Instance.Settings.animSpeed;
     }
     
     public override void SetCurrentInput(int page, int index)
@@ -80,15 +84,27 @@ public class ScenesInput0 : RegistInputControl
                         v.Prepare();
                     }
                 }
+
+                if (AudioManager.Instance)
+                {
+                    AudioManager.Instance.PlayAudio(AudioName.Sound, false);
+                }
+                
                 break;
             case (1,0):
+                AudioManager.Instance.PlayAudio(AudioName.Sound, true);
                 anim.SetFloat(SPEED,0); 
                 if (DataSaver.Instance.CurrentSelected == 0)
                 {
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 1; i <= 2; i++)
                     {
                         videoPlayers[i].Play();
+                        Debug.Log("Played");
                     }
+                }
+                else if (DataSaver.Instance.CurrentSelected == 1)
+                {
+                    videoPlayers[0].Play();
                 }
                 else if (DataSaver.Instance.CurrentSelected == 3)
                 {
@@ -166,13 +182,99 @@ public class ScenesInput0 : RegistInputControl
         switch (context)
         {
             case Key.UpArrow:
-                float val = performed ? 1f : 0f;
+                float val = performed ? _animSpeed : 0f;
                 anim.SetFloat(SPEED,val); 
                 break;
             case Key.DownArrow:
-                float val2 = performed ? -1f : 0f;
-                anim.SetFloat(SPEED,val2); 
+                if (GetAnimFrame.Instance.currentFrame > 0)
+                {
+                    float val2 = performed ? -_animSpeed : 0f;
+                    anim.SetFloat(SPEED,val2); 
+                }
+                else
+                {
+                    anim.SetFloat(SPEED,0); 
+                }
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        if (DataSaver.Instance.CurrentSelected == 0 && PageController.Instance.CurrentPage == 1)
+        {
+            switch (animFrame.currentFrame)
+            {
+                case < 180 :
+                    if (!videoPlayers[1].isPlaying)
+                    {
+                        videoPlayers[1].Play();
+                    }
+
+                    if (!videoPlayers[2].isPlaying)
+                    {
+                        videoPlayers[2].Play();
+                    }
+                    break;
+                
+                case <= 210:
+                    if (videoPlayers[1].isPlaying)
+                    {
+                        videoPlayers[1].Stop();
+                        videoPlayers[1].Prepare();
+                    }
+
+                    if (videoPlayers[2].isPlaying)
+                    {
+                        videoPlayers[2].Stop();
+                        videoPlayers[2].Prepare();
+                    }
+                    break;
+                
+                case >= 300 and <960 :
+                    if (!videoPlayers[3].isPlaying)
+                    {
+                        videoPlayers[3].Play();
+                    }
+                    if (!videoPlayers[4].isPlaying)
+                    {
+                        videoPlayers[4].Play();
+                    }
+                    if (!videoPlayers[5].isPlaying)
+                    {
+                        videoPlayers[5].Play();
+                    }
+                    
+                    if (videoPlayers[0].isPlaying)
+                    {
+                        videoPlayers[0].Stop();
+                        videoPlayers[0].Prepare();
+                    }
+                    break;
+                case >= 960 and <= 990:
+                    if (videoPlayers[3].isPlaying)
+                    {
+                        videoPlayers[3].Stop();
+                        videoPlayers[3].Prepare();
+                    }
+                    if (videoPlayers[4].isPlaying)
+                    {
+                        videoPlayers[4].Stop();
+                        videoPlayers[4].Prepare();
+                    }
+                    if (videoPlayers[5].isPlaying)
+                    {
+                        videoPlayers[5].Stop();
+                        videoPlayers[5].Prepare();
+                    }
+                    
+                    if (!videoPlayers[0].isPlaying)
+                    {
+                        videoPlayers[0].Play();
+                    }
+                    break;
+            }
+            
         }
     }
 

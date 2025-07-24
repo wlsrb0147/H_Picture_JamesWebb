@@ -44,16 +44,12 @@ public class GetAnimFrame : MonoBehaviour
         var infos = anim.GetCurrentAnimatorClipInfo(0);
         if (infos.Length == 0) return;
         
-        // ① 재생 중인 클립
         AnimationClip playingClip = infos[0].clip;
-        // ② clips[] 배열에서 인덱스 찾기
         int idx = Array.IndexOf(clips, playingClip);
-        if (idx < 0) return;  // 혹시 배열에 없으면 종료
+        if (idx < 0) return;
 
-        // ③ 저장해 둔 길이 가져오기
         float length = _clipLength[idx];
 
-        // ④ normalizedTime으로 현재 루프 내 시간 계산
         float normalized = state.normalizedTime;
 
         if (normalized >= 1)
@@ -62,7 +58,6 @@ public class GetAnimFrame : MonoBehaviour
         }
         float timeSec = normalized * length;
 
-        // ⑤ 프레임 계산 (고정 frameRate 사용 시)
         currentFrame = Mathf.FloorToInt(timeSec * _frameRate);
     }
 }

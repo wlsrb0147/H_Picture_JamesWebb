@@ -12,6 +12,7 @@ using UnityEngine.Video;
 public enum AudioName
 {
     Sample = 0,
+    Sound = 1,
 }
 
 public class AudioManager : MonoBehaviour
@@ -41,8 +42,8 @@ public class AudioManager : MonoBehaviour
     private AudioSource[] _audioSources;
     public AudioSetting[] AudioSetting { get; set; }
     
-    private Dictionary<AudioName, AudioSource> _audioSourcesDict;
-    private Dictionary<string, AudioSource> _audioSourcesFromString;
+    private readonly Dictionary<string, AudioSource> _audioSourcesFromString = new ();
+    private readonly Dictionary<AudioName, AudioSource> _audioSourcesDict = new ();
     
     private bool _dataSet;
 
@@ -85,8 +86,7 @@ public class AudioManager : MonoBehaviour
     // 딕셔너리 설정
     private void BuildAudioDictionaries()
     {
-        _audioSourcesDict = new Dictionary<AudioName, AudioSource>();
-        _audioSourcesFromString = new Dictionary<string, AudioSource>();
+
 
         foreach (AudioName audioEnum in Enum.GetValues(typeof(AudioName)))
         {

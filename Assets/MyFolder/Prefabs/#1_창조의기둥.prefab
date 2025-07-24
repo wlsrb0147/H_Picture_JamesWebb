@@ -263,6 +263,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "#1_\uCC3D\uC870\uC758\uAE30\uB465"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5e208d3dccb77a749877d024fa51fb10,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1710912232132487336, guid: 5e208d3dccb77a749877d024fa51fb10,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -325,21 +330,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3376082ea459bb642ab7ce5897c0189a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRenderer: {fileID: 8277385028320954126}
-  targetRenderer2: {fileID: 3941199234504326207}
   fps: 30
-  anim: {fileID: 0}
-  start: 180
-  end: 210
---- !u!23 &3941199234504326207 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -4500384706176131772, guid: 5e208d3dccb77a749877d024fa51fb10,
-    type: 3}
-  m_PrefabInstance: {fileID: 8591346530863980923}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &8277385028320954126 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 424945804941960821, guid: 5e208d3dccb77a749877d024fa51fb10,
-    type: 3}
-  m_PrefabInstance: {fileID: 8591346530863980923}
-  m_PrefabAsset: {fileID: 0}
+  dontAppear: 0
+  dontDisappear: 0
+  folderName: 
+  appearStart: 0
+  appearEnd: 0
+  disappearStart: 0
+  disappearEnd: 0

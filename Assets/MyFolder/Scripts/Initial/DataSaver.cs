@@ -46,8 +46,11 @@ public class DataSaver : MonoBehaviour
             {
                 if (value == -1)
                 {
-                    selections[_currentSelected].SetActive(false);
-                    _currentSelected = -1;
+                    if (_currentSelected != 0)
+                    { 
+                        selections[_currentSelected].SetActive(false); 
+                        _currentSelected = 0;
+                    }
                 }
                 return;
             }

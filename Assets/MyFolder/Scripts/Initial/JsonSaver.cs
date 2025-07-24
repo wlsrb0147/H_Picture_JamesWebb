@@ -31,6 +31,7 @@ public class StickInput
     public string down;
     public string left;
     public string right;
+    public string button;
 }
 
 [Serializable]
@@ -58,6 +59,7 @@ public class Settings
     public VideoSetting[] videoSetting;
     public ArduinoSetting arduinoSetting;
     public StickInput stickInput;
+    public float animSpeed;
 }
 
 public class JsonSaver : MonoBehaviour

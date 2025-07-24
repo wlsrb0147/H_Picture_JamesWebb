@@ -1690,7 +1690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &720668934
 Transform:
   m_ObjectHideFlags: 0
@@ -1811,6 +1811,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPage: 0
   currentIndex: 0
+  anim: {fileID: 0}
+  cam: {fileID: 0}
+  videoPlayers: []
 --- !u!1 &746823778
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,7 +5273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1917757842
 Transform:
   m_ObjectHideFlags: 0

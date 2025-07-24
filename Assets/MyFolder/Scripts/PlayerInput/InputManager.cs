@@ -19,6 +19,8 @@ public class InputManager : MonoBehaviour
 {
     // page, index 기반으로 입력 제어
     
+    private Dictionary<string, Key> map = new ();
+    
     private static InputManager _instance;
 
     public static InputManager Instance
@@ -70,6 +72,12 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         _stickInput = JsonSaver.Instance.Settings.stickInput;
+
+        map[_stickInput.up] = Key.UpArrow;
+        map[_stickInput.down] = Key.DownArrow;
+        map[_stickInput.left] = Key.LeftArrow;
+        map[_stickInput.right] = Key.RightArrow;
+        map[_stickInput.button] = Key.Space;
     }
 
     public void SetInputControl(InputControl inputControl)
@@ -118,27 +126,12 @@ public class InputManager : MonoBehaviour
         }
         else if (context.control is ButtonControl btn)
         {
-            var btnName = btn.name;
-            if (string.Equals(btnName, _stickInput.up))
+            key = map.GetValueOrDefault(btn.name, Key.None);
+
+            if (key == Key.None)
             {
-                key = Key.UpArrow;
-            }
-            else if (string.Equals(btnName, _stickInput.down))
-            {
-                key = Key.DownArrow;
-            }
-            else if (string.Equals(btnName, _stickInput.left))
-            {
-                key = Key.LeftArrow;
-            }
-            else if (string.Equals(btnName, _stickInput.right))
-            {
-                key = Key.RightArrow;
-            }
-            else
-            {
-                Debug.Log(btnName);
-                key = Key.None;
+                Debug.Log(btn.name + " is not a key");
+                return;
             }
         }
         else
